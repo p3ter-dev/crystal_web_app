@@ -4,16 +4,21 @@ const port = 3000;
 const HttpError = require('./models/http-error');
 const app = express();
 const userRoutes = require('./routes/userRoutes');
+const path = require('path');
 
 app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+app.use(express.static(path.join(__dirname, "public")));
+
 app.use('/', userRoutes);
 
-app.use((req, res, next) => {
+app.use((req, res,) => {
     const error = new HttpError('sorry, could not find this route.', 404);
-    throw error;
+    return next(error);
 })
 
 app.use((error, req, res, next) => {
