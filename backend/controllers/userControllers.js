@@ -2,7 +2,7 @@ const { validationResult } = require('express-validator');
 const HttpError = require('../models/http-error');
 
 const homePage = (req, res, next) => {
-    res.render('index.ejs', { title: "car wash service" });
+    res.render('pages/index', { title: "car wash service" });
 }
 
 const aboutPage = (req, res, next) => {
