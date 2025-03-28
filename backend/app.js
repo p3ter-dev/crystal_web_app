@@ -4,16 +4,16 @@ const port = 3000;
 const HttpError = require('./models/http-error');
 const userRoutes = require('./routes/userRoutes');
 const path = require('path');
-
 const app = express();
 
+app.use(express.static("backend/public"));
 app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
-app.use(express.static(path.join(__dirname, "public")));
+
 
 app.use('/api', userRoutes);
 
