@@ -5,7 +5,7 @@ const { check } = require('express-validator');
 
 router.get('/home', userControllers.homePage);
 
-router.get('/bookings', userControllers.bookingPage);
+router.get('/booking', userControllers.bookingPage);
 
 router.get('/about', userControllers.aboutPage);
 
