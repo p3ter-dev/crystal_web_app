@@ -2,13 +2,14 @@
   "name": "car_wash_web_app",
   "version": "1.0.0",
   "description": "this is the repo for the web app",
-  "main": "app.js",
+  "main": "backend/server.js",
   "type": "commonjs",
   "directories": {
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon backend/server.js"
   },
   "keywords": [],
   "author": "peter kinfe",
