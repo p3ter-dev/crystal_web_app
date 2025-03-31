@@ -5,9 +5,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title><%= title %></title>
 </head>
 <body>
+    <header class="bg-light text-center py-5">
+        <div class="container">
+            <h1 class="display-4">Crystal Car Wash Service</h1>
+            <p class="lead">We provide top-quality car cleaning and detailing services with professional care.</p>
+            <a href="/api/services" class="btn btn-primary btn-lg">Explore Services</a>
+            <a href="/api/booking" class="btn btn-primary btn-lg">Book a Wash</a>
+        </div>      
+    </header>
+
+    <section class="container my-5">
+        <h2 class="text-center">Our Services</h2>
+        <div class="row text-center mt-4">
+            <div class="col-md-4">
+                <div class="card shadow-sm p-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Exterior Wash</h5>
+                        <p class="card-text">Professional exterior cleaning for a spotless shine.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm p-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Interior Detailing</h5>
+                        <p class="card-text">Deep cleaning for seats, dashboard, and carpets.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm p-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Wax & Polish</h5>
+                        <p class="card-text">Enhance your car’s shine with premium waxing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const toggleDarkMode = document.getElementById("toggleDarkMode");
+        const html = document.querySelector('html');
+    
+        function updateTheme() {
+            const isDarkMode = localStorage.getItem("darkMode") === "enabled";
+            html.setAttribute("data-bs-theme", isDarkMode ? "dark" : "light");
+        }
+    
+        updateTheme();
+    
+        toggleDarkMode.addEventListener("click", () => {
+            const isDarkMode = html.getAttribute("data-bs-theme") === "light";
+            localStorage.setItem("darkMode", isDarkMode ? "enabled" : "disabled");
+            updateTheme();
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
 
