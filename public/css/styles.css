@@ -1,6 +1,107 @@
 #toggleDarkMode {
     border-radius: 12px; 
-    padding: 10px 10px; 
-    transition: all 0.5s ease; 
+    padding: 10px 15px; 
+    transition: all 0.3s ease; 
     background-color: grey;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 };
+
+#toggleDarkMode:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);  
+}
+
+#toggleDarkMode:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hero-section {
+    background-blend-mode: overlay;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+img {
+    transition: transform 3s ease-in-out;
+    max-width: 100%;
+    height: auto;
+};
+
+img:hover {
+    transform: scale(1.1);
+};
+
+.zoomIn {
+    animation: zoomIn 1s ease-in-out forwards;
+  }
+  
+  @keyframes zoomIn {
+    from {
+      transform: scale(0.1);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+.zoomIn {
+  animation: zoomIn 0.8s ease-in-out 0.7s forwards;
+}
+
+.bounceY {
+    animation-name: bounceY;
+    animation-duration: 1.5s;
+    animation-fill-mode: both;
+}
+
+@keyframes bounceY {
+    0%, 25%, 55%, 85%, 100% {
+        animation-timing-function: ease-out;
+        transform: scale3d(1, 1, 1);
+    }
+    41%, 44% {
+        animation-timing-function: ease-in;
+        transform: scale3d(1, 2, 1);
+    }
+    70% {
+        animation-timing-function: ease-in;
+        transform: scale3d(1, 1.5, 1);
+    }
+    90% {
+        transform: scale3d(1, 1.1, 1);
+    }
+}
+
+.bounceY {
+    animation-name: bounceY;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+}
+
+mg:hover {
+    transform: scale(1.1);
+  }
+
+img {
+    transition: transform 0.3s ease-in-out;
+    max-width: 100%;
+    height: auto;
+}
