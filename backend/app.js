@@ -14,6 +14,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/api', userRoutes);
 
+app.use((req, res, next) => {
+    res.locals.session = req.session;
+    next();
+});  
+
 app.use((req, res) => {
     const error = new HttpError('sorry, could not find this route.', 404);
     return next(error);
