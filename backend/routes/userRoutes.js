@@ -9,4 +9,8 @@ router.get('/booking', userControllers.bookingPage);
 
 router.get('/about', userControllers.aboutPage);
 
+router.get('/login', userControllers.loginPage);
+
+router.get('/signup', userControllers.signupPage);
+
 module.exports = router;
