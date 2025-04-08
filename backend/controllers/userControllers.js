@@ -13,6 +13,16 @@ const bookingPage = (req, res) => {
     res.render('pages/booking', { title: "book a car wash" });
 }
 
+const loginPage = (req, res) => {
+    res.render('pages/login', { title: "login page" });
+}
+
+const signupPage = (req, res) => {
+    res.render('pages/signup', { title: "signup page" });
+}
+
 exports.homePage = homePage;
 exports.aboutPage = aboutPage;
 exports.bookingPage = bookingPage;
+exports.loginPage = loginPage;
+exports.signupPage = signupPage;
