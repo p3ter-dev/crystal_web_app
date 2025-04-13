@@ -121,6 +121,7 @@ img {
     min-height: 100vh;
     display: flex;
     justify-content: center;
+    background-color: rgb(200, 163, 248);
     align-items: center;
     overflow: hidden;
 }
