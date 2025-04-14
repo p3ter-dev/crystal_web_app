@@ -21,8 +21,17 @@ const signupPage = (req, res) => {
     res.render('pages/signup', { title: "signup page" });
 }
 
+const servicePage = (req, res) => {
+    res.render('pages/service', { title: "services we provide" });
+}
+
+const contactPage = (req, res) => {
+    res.render('pages/contact', { title: "contact us" });
+}
 exports.homePage = homePage;
 exports.aboutPage = aboutPage;
 exports.bookingPage = bookingPage;
 exports.loginPage = loginPage;
 exports.signupPage = signupPage;
+exports.servicePage = servicePage;
+exports.contactPage = contactPage;
