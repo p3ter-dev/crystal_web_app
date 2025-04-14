@@ -13,4 +13,8 @@ router.get('/login', userControllers.loginPage);
 
 router.get('/signup', userControllers.signupPage);
 
+router.get('/services', userControllers.servicePage);
+
+router.get('/contact', userControllers.contactPage);
+
 module.exports = router;
