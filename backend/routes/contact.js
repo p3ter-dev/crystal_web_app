@@ -9,7 +9,7 @@ router.post('/', (req, res) => {
     }
 
     console.log("feedback received: ", { name, email, message});
-    res.send("<h1>Thank you for contacting us!</h1>");
+    res.render('pages/thank-you.ejs', { title: 'thank you' });
 });
 
 module.exports = router;
