@@ -125,3 +125,26 @@ img {
     align-items: center;
     overflow: hidden;
 }
+
+.success-body {
+    background-color: #e6ffee;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.success-wrapper {
+    text-align: center;
+    padding: 40px;
+}
+
+.success-icon i {
+    font-size: 50px;
+    color: #28a745;
+}
+
+.success-message {
+    color: #28a745;
+    margin-bottom: 10px;
+}
