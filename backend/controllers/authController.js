@@ -1,11 +1,12 @@
 const bcrypt = require('bcrypt');
 const pool = require('../../database/config/contactDb');
+const HttpError = require('../models/http-error');
 
 const signUpController = async (req, res,) => {
     const { username, email, password, confirmPassword } = req.body;
 
     if (!username || !email || !password || !confirmPassword) {
-        return res.status(400).send("all fields are mandatory.");
+        throw new HttpError('all fields are mandatory', 422);
     }
 
     if (password != confirmPassword) {
@@ -15,7 +16,7 @@ const signUpController = async (req, res,) => {
     try {
         const existingUser = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
         if (existingUser.rows.length > 0) {
-            return res.status(400).send("Email is already in use.");
+            throw new HttpError('user already exists, please login', 422);
         }
         
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -26,7 +27,7 @@ const signUpController = async (req, res,) => {
         res.render('pages/success', { title: 'success page' });
     } catch (error) {
         console.error("signup error: ", error);
-        res.status(500).send("something went wrong, please try again.");
+        throw new HttpError('something went wrong, please try again', 500);
     }
 }
 
