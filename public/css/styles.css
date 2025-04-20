@@ -127,7 +127,7 @@ img {
 }
 
 .success-body {
-    background-color: #e6ffee;
+    background-color: rgba(0, 255, 0, 0.1);
     height: 100vh;
     display: flex;
     align-items: center;
@@ -137,6 +137,7 @@ img {
 .success-wrapper {
     text-align: center;
     padding: 40px;
+    margin-bottom: 400px;
 }
 
 .success-icon i {
