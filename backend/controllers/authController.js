@@ -1,22 +1,30 @@
 const bcrypt = require('bcrypt');
 const pool = require('../../database/config/contactDb');
-const HttpError = require('../models/http-error');
+const { validationResult } = require('express-validator');
 
 const signUpController = async (req, res,) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).send('validation error', { 
+            title: 'validation errors',
+            errors: errors.array()
+        });
+    }
+    
     const { username, email, password, confirmPassword } = req.body;
 
     if (!username || !email || !password || !confirmPassword) {
-        throw new HttpError('all fields are mandatory', 422);
+        return res.status(400).render('errors/fields-required');
     }
 
     if (password != confirmPassword) {
-        return res.status(400).send("password do not match.");
+        return res.status(400).render('errors/password-mismatch');
     }
 
     try {
         const existingUser = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
         if (existingUser.rows.length > 0) {
-            throw new HttpError('user already exists, please login', 422);
+            return res.status(400).render('errors/email-exists');
         }
         
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -27,7 +35,7 @@ const signUpController = async (req, res,) => {
         res.render('pages/success', { title: 'success page' });
     } catch (error) {
         console.error("signup error: ", error);
-        throw new HttpError('something went wrong, please try again', 500);
+        res.status(500).render('errors/500', { title: 'server error' });
     }
 }
 
