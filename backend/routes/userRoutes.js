@@ -1,7 +1,6 @@
 const express = require('express');
 const userControllers = require('../controllers/userControllers');
 const router = express.Router();
-const { check } = require('express-validator');
 
 router.get('/home', userControllers.homePage);
 
@@ -16,5 +15,7 @@ router.get('/signup', userControllers.signupPage);
 router.get('/services', userControllers.servicePage);
 
 router.get('/contact', userControllers.contactPage);
+
+router.get('/profile', userControllers.profilePage);
 
 module.exports = router;
