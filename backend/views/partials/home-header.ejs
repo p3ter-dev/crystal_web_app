@@ -29,9 +29,16 @@
                     <a href="/api/login" class="btn btn-outline-light me-2">Login</a>
                     <a href="/api/signup" class="btn btn-warning">Sign Up</a>
                 <% } else { %>
-                    <a href="/api/logout" class="btn btn-outline-light">Logout</a>
+                    <div class="d-flex align-items-center">
+                        <a href="/api/profile" class="text-decoration-none">
+                            <div class="badge rounded-circle bg-light text-primary fw-bold me-3"
+                                 style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                                <%= session.user.username.charAt(0).toUpperCase() %>
+                            </div>
+                        </a>                        
+                        <a href="/api/logout" class="btn btn-outline-light">Logout</a>
+                    </div>                    
                 <% } %>
-
             </div>
         </div>
     </nav>
