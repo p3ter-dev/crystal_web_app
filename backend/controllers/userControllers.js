@@ -1,5 +1,6 @@
 const homePage = (req, res) => {
-    res.render('pages/home', { title: "car wash home page", session: req.session });
+    const user = req.session.user;
+    res.render('pages/home', { title: "car wash home page", user });
 }
 
 const aboutPage = (req, res) => {
@@ -25,6 +26,15 @@ const servicePage = (req, res) => {
 const contactPage = (req, res) => {
     res.render('pages/contact', { title: "contact us" });
 }
+
+const profilePage = (req, res) => {
+    const { username, email } = req.session.user;
+    if (!req.session.user) {
+        return res.redirect('/api/login');
+    }
+    res.render('pages/profile', { title: "user profile", username, email });
+}
+
 exports.homePage = homePage;
 exports.aboutPage = aboutPage;
 exports.bookingPage = bookingPage;
@@ -32,3 +42,4 @@ exports.loginPage = loginPage;
 exports.signupPage = signupPage;
 exports.servicePage = servicePage;
 exports.contactPage = contactPage;
+exports.profilePage = profilePage;
