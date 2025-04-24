@@ -19,6 +19,8 @@ router.post('/signup', [
         .withMessage('passwords do not match')
 ], authControllers.signUpController);
 
+router.post('/login', authControllers.logInController);
+
 router.get('/logout', authControllers.logOutController);
 
 module.exports = router;
