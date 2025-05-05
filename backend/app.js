@@ -6,6 +6,7 @@ const HttpError = require('./models/http-error');
 const userRoutes = require('./routes/userRoutes');
 const contactRoute = require('./routes/contact');
 const authRoute = require('./routes/authRoutes');
+const bookingRoute = require('./routes/bookingRoute');
 const path = require('path');
 const app = express();
 
@@ -32,6 +33,8 @@ app.use('/api', userRoutes);
 app.use('/api/contact', contactRoute);
 
 app.use('/api', authRoute);
+
+app.use('/api', bookingRoute);
 
 app.use((req, res) => {
     const error = new HttpError('sorry, could not find this route.', 404);
