@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const pool = require('/Users/peter/car_wash_web_app/database/config/contactDb');
+const pool = require('../../database/config/contactDb');
 
 router.post('/', async (req, res) => {
     const { name, email, message } = req.body;
