@@ -69,7 +69,7 @@ const logInController = async (req, res) => {
             email: user.email,
         };
         console.log("logged in users: ", req.session.user);
-        res.redirect('/api/home');
+        res.redirect('/home');
     } catch(error) {
         console.error("login error: ", error);
         res.status(500).render('errors/500', { title: 'server error' });
@@ -82,7 +82,7 @@ const logOutController = (req, res) => {
             console.error("logout error: ", error);
             return res.status(500).render('errors/500', { title: 'server error' });
         }
-        res.redirect('/api/home');
+        res.redirect('/home');
     });
 };
 
