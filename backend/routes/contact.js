@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../../database/config/contactDb');
 
-router.post('/', async (req, res) => {
+router.post('/contact', async (req, res) => {
     const { name, email, message } = req.body;
     
     if (!name || !email || !message) {
