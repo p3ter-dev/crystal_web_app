@@ -14,7 +14,6 @@ app.use(express.static(path.join(__dirname, "../public")));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(bodyParser.json());
-
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(session({
@@ -28,13 +27,12 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/api', userRoutes);
+app.use(userRoutes);
 
-app.use('/api/contact', contactRoute);
+app.use(contactRoute);
 
-app.use('/api', authRoute);
+app.use(authRoute);
 
-app.use('/api', bookingRoute);
 
 app.use((req, res) => {
     const error = new HttpError('sorry, could not find this route.', 404);
