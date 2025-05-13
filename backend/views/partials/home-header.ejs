@@ -9,20 +9,20 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand" href="/api/home">Car Wash Service</a>
+            <a class="navbar-brand" href="/home">Car Wash Service</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="/api/home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/api/about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/api/services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/services">Services</a></li>
                     <% if(session.user) {%>
-                        <li class="nav-item"><a class="nav-link" href="/api/contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
                     <% } %>
                     <% if (session.user) { %>
-                        <li class="nav-item"><a class="nav-link" href="/api/booking">Book Now</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/booking">Book Now</a></li>
                     <% } %>
                 </ul>
                 <button class="btn btn-outline-light ms-3 me-2" id="toggleDarkMode">
@@ -30,16 +30,16 @@
                 </button>  
 
                 <% if (!session.user) { %>
-                    <a href="/api/login" class="btn btn-outline-light me-2">Login</a>
-                    <a href="/api/signup" class="btn btn-warning">Sign Up</a>
+                    <a href="/login" class="btn btn-outline-light me-2">Login</a>
+                    <a href="/signup" class="btn btn-warning">Sign Up</a>
                 <% } else { %>
                     <div class="d-flex align-items-center">
-                        <a href="/api/profile" class="text-decoration-none">
+                        <a href="/profile" class="text-decoration-none">
                             <div class="avatar-circle">
                                 <%= session.user.username.charAt(0).toUpperCase() %>
                             </div>
                         </a>             
-                        <a href="/api/logout" class="btn btn-outline-light">Logout</a>
+                        <a href="/logout" class="btn btn-outline-light">Logout</a>
                     </div>                    
                 <% } %>
             </div>
