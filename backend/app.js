@@ -6,9 +6,12 @@ const HttpError = require('./models/http-error');
 const userRoutes = require('./routes/userRoutes');
 const contactRoute = require('./routes/contact');
 const authRoute = require('./routes/authRoutes');
+const passportRoute = require('./routes/passportRoute');
 const bookingRoute = require('./routes/bookingRoute');
+require('./config/passportConfig');
 const path = require('path');
 const app = express();
+const passport = require('passport');
 
 app.use(express.static(path.join(__dirname, "../public")));
 app.set('view engine', 'ejs');
@@ -22,6 +25,9 @@ app.use(session({
     saveUninitialized: true,
 }));
 
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use((req, res, next) => {
     res.locals.session = req.session;
     next();
@@ -33,6 +39,7 @@ app.use(contactRoute);
 
 app.use(authRoute);
 
+app.use(passportRoute);
 
 app.use((req, res) => {
     const error = new HttpError('sorry, could not find this route.', 404);
