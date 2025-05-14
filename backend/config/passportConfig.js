@@ -1,0 +1,45 @@
+require('dotenv').config();
+const passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const pool = require('../../database/config/contactDb');
+
+passport.use(new GoogleStrategy({
+    clientID: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+    callbackURL: "http://localhost:3000/auth/google/callback",
+  },
+  async (accessToken, refreshToken, profile, done) => {
+    try {
+      const existingUser = await pool.query(
+        'SELECT * FROM users WHERE google_id = $1',
+        [profile.id]
+      );
+
+      if (existingUser.rows.length > 0) {
+        return done(null, existingUser.rows[0]);
+      }
+
+      const result = await pool.query(
+        'INSERT INTO users (google_id, username, email) VALUES ($1, $2, $3) RETURNING *',
+        [profile.id, profile.emails[0].value]
+      );
+
+      return done(null, result.rows[0]);
+    } catch (err) {
+      return done(err, null);
+    }
+  }
+));
+
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+
+passport.deserializeUser(async (id, done) => {
+  try {
+    const result = await pool.query('SELECT * FROM users WHERE id = $1', [id]);
+    done(null, result.rows[0]);
+  } catch (err) {
+    done(err, null);
+  }
+});
