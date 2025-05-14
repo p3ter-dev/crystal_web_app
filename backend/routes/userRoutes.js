@@ -2,6 +2,8 @@ const express = require('express');
 const userControllers = require('../controllers/userControllers');
 const router = express.Router();
 
+router.get('/', userControllers.homePage);
+
 router.get('/home', userControllers.homePage);
 
 router.get('/booking', userControllers.bookingPage);
