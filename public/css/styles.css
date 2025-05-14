@@ -169,5 +169,5 @@ img {
 .avatar-circle:hover {
     background-color: #03060a;
     color: white;
-    transform: scale(1.1);
+    transform: scale(1.0);
 }
