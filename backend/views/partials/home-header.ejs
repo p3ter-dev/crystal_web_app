@@ -33,13 +33,13 @@
                     <a href="/login" class="btn btn-outline-light me-2">Login</a>
                     <a href="/signup" class="btn btn-warning">Sign Up</a>
                 <% } else { %>
+                    <a href="/logout" class="btn btn-outline-light">Logout</a>
                     <div class="d-flex align-items-center">
                         <a href="/profile" class="text-decoration-none">
                             <div class="avatar-circle">
                                 <%= session.user.username.charAt(0).toUpperCase() %>
                             </div>
-                        </a>             
-                        <a href="/logout" class="btn btn-outline-light">Logout</a>
+                        </a>
                     </div>                    
                 <% } %>
             </div>
