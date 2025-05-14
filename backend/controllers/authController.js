@@ -1,6 +1,5 @@
 const bcrypt = require('bcrypt');
 const pool = require('../../database/config/contactDb');
-
 const signUpController = async (req, res) => {
 const { username, email, password, confirmPassword } = req.body;
 
