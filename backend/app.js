@@ -8,10 +8,11 @@ const contactRoute = require('./routes/contact');
 const authRoute = require('./routes/authRoutes');
 const passportRoute = require('./routes/passportRoute');
 const bookingRoute = require('./routes/bookingRoute');
-require('./config/passportConfig');
 const path = require('path');
 const app = express();
 const passport = require('passport');
+const pgSession = require('connect-pg-simple')(session);
+const { Pool } = require('pg');
 
 app.use(express.static(path.join(__dirname, "../public")));
 app.set('view engine', 'ejs');
@@ -19,12 +20,24 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+const pgPool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+});
+
 app.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
+  store: new pgSession({
+    pool: pgPool,
+    tableName: 'session',
+  }),
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+  }
 }));
 
+require('./config/passportConfig');
 app.use(passport.initialize());
 app.use(passport.session());
 
