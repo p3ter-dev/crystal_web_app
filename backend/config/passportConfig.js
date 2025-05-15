@@ -27,7 +27,6 @@ passport.use(new GoogleStrategy({
         [profile.id, profile.displayName, profile.emails[0].value]
       );
 
-      console.log("Inserted user:", result.rows[0]);
       return done(null, result.rows[0]);
 
     } catch (err) {
