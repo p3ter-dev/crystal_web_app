@@ -18,10 +18,10 @@
                     <li class="nav-item"><a class="nav-link active" href="/home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="/services">Services</a></li>
-                    <% if(session.user) {%>
+                    <% if(user) {%>
                         <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
                     <% } %>
-                    <% if (session.user) { %>
+                    <% if (user) { %>
                         <li class="nav-item"><a class="nav-link" href="/booking">Book Now</a></li>
                     <% } %>
                 </ul>
@@ -29,7 +29,7 @@
                     <img src="/images/darkmode.png" alt="Dark Mode" width="20" height="20" id="darkModeIcon">
                 </button>  
 
-                <% if (!session.user) { %>
+                <% if (!user) { %>
                     <a href="/login" class="btn btn-outline-light me-2">Login</a>
                     <a href="/signup" class="btn btn-warning">Sign Up</a>
                 <% } else { %>
@@ -37,7 +37,13 @@
                     <div class="d-flex align-items-center">
                         <a href="/profile" class="text-decoration-none">
                             <div class="avatar-circle">
-                                <%= session.user.username.charAt(0).toUpperCase() %>
+                                <% if (user && user.username) { %>
+                                    <%= user.username.charAt(0).toUpperCase() %>
+                                <% } else if (user && user.displayName) { %>
+                                    <%= user.displayName.charAt(0).toUpperCase() %>
+                                <% } else { %>
+                                    U
+                                <% } %>
                             </div>
                         </a>
                     </div>                    
