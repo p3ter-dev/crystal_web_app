@@ -11,6 +11,7 @@ const bookingRoute = require('./routes/bookingRoute');
 const path = require('path');
 const app = express();
 const passport = require('passport');
+require('./config/passportConfig');
 const pgSession = require('connect-pg-simple')(session);
 const { Pool } = require('pg');
 
@@ -37,7 +38,6 @@ app.use(session({
   }
 }));
 
-require('./config/passportConfig');
 app.use(passport.initialize());
 app.use(passport.session());
 
