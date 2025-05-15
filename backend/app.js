@@ -20,9 +20,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(session({
-    secret: 'secretKey',
+    secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
 }));
 
 app.use(passport.initialize());
@@ -40,21 +40,5 @@ app.use(contactRoute);
 app.use(authRoute);
 
 app.use(passportRoute);
-
-app.use((req, res) => {
-    const error = new HttpError('sorry, could not find this route.', 404);
-    return next(error);
-});
-
-app.use((error, req, res, next) => {
-    if(res.headerSent) {
-        return next(error);
-    }
-    res.status(404);
-    res.render('pages/errors', {
-        title: 'Error',
-        message: 'Something went wrong.'
-    });
-});
 
 module.exports = app;
