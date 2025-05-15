@@ -1,5 +1,5 @@
 const homePage = (req, res) => {
-    const user = req.session.user;
+    const user = req.user || req.session.user;
     res.render('pages/home', { title: "car wash home page", user });
 }
 
