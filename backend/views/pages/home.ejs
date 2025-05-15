@@ -14,7 +14,7 @@
     <div class="container">
       <h1 class="display-4 fw-bold zoomIn">Crystal Car Wash Services</h1>
       <p class="lead">Experience cleanliness like never before. Fast, friendly, and affordable.</p>
-      <% if (session.user) { %>
+      <% if (user) { %>
         <a href="/booking" class="btn btn-warning btn-lg mt-3">Book Now</a>
       <% } else { %>
         <a href="/auth/google" class="btn btn-light btn-lg mt-3" style="background: white; color: #757575; border: 1px solid #ddd; display: inline-flex; align-items: center; justify-content: center;">
@@ -52,7 +52,7 @@
     <div class="container">
       <h2 class="mb-3">Ready to Shine?</h2>
       <p class="mb-4">Join thousands of happy customers. Book your car wash today.</p>
-      <% if(session.user) { %>
+      <% if(user) { %>
         <a href="/booking" class="btn btn-light btn-lg">Schedule Now</a>
       <% } else { %>
         <a href="/auth/google" class="btn btn-light btn-lg" style="background: white; color: #757575; border: 1px solid #ddd; display: inline-flex; align-items: center; justify-content: center;">
