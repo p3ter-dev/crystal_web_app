@@ -2,7 +2,6 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
-const HttpError = require('./models/http-error');
 const userRoutes = require('./routes/userRoutes');
 const contactRoute = require('./routes/contact');
 const authRoute = require('./routes/authRoutes');
@@ -53,5 +52,7 @@ app.use(contactRoute);
 app.use(authRoute);
 
 app.use(passportRoute);
+
+app.use(bookingRoute);
 
 module.exports = app;
