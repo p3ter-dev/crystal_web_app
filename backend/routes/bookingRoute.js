@@ -17,7 +17,7 @@ router.post('/bookings', [
     check('date')
         .notEmpty()
         .withMessage('date is required'),
-    check('service')
+    check('serviceType')
         .notEmpty()
         .withMessage('service is required')
 ], bookingController.bookingController);
