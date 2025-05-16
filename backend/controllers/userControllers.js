@@ -30,7 +30,7 @@ const contactPage = (req, res) => {
 const profilePage = (req, res) => {
     const { username, email } = req.session.user;
     if (!req.session.user) {
-        return res.redirect('/api/login');
+        return res.redirect('/login');
     }
     res.render('pages/profile', { title: "user profile", username, email });
 }
