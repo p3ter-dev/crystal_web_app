@@ -10,24 +10,34 @@ passport.use(new GoogleStrategy({
   },
   async function(accessToken, refreshToken, profile, done) {
     const account = profile._json;
+    const email = profile.emails[0].value;
     console.log(account);
 
     try {
-      const existingUser = await pool.query(
+      let userByGoogleId = await pool.query(
         'SELECT * FROM users WHERE google_id = $1',
         [profile.id]
       );
 
-      if (existingUser.rows.length > 0) {
+      if (userByGoogleId.rows.length > 0) {
         return done(null, existingUser.rows[0]);
       }
 
-      const result = await pool.query(
+      const userByEmail = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
+      if (userByEmail.rows.length > 0) {
+        const updatedUser = await pool.query(
+          'UPDATE users SET google_id = $1 WHERE email = $2 RETURNING *',
+          [profile.id, email]
+        );
+        return done(null, updatedUser.rows[0]);
+      }
+
+      const newUser = await pool.query(
         'INSERT INTO users (google_id, username, email) VALUES ($1, $2, $3) RETURNING *',
         [profile.id, profile.displayName, profile.emails[0].value]
       );
 
-      return done(null, result.rows[0]);
+      return done(null, newUser.rows[0]);
 
     } catch (err) {
       console.error("Error in GoogleStrategy:", err);
