@@ -85,6 +85,8 @@ const logOutController = (req, res) => {
     });
 };
 
-exports.signUpController = signUpController;
-exports.logInController = logInController;
-exports.logOutController = logOutController;
+module.exports = {
+    signUpController,
+    logInController,
+    logOutController,
+};
