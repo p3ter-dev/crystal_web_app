@@ -35,11 +35,13 @@ const profilePage = (req, res) => {
     res.render('pages/profile', { title: "user profile", username, email });
 }
 
-exports.homePage = homePage;
-exports.aboutPage = aboutPage;
-exports.bookingPage = bookingPage;
-exports.loginPage = loginPage;
-exports.signupPage = signupPage;
-exports.servicePage = servicePage;
-exports.contactPage = contactPage;
-exports.profilePage = profilePage;
+module.exports = {
+    homePage,
+    aboutPage,
+    bookingPage,
+    loginPage,
+    signupPage,
+    servicePage,
+    contactPage,
+    profilePage,
+};
