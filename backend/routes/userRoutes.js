@@ -6,7 +6,7 @@ router.get('/', userControllers.homePage);
 
 router.get('/home', userControllers.homePage);
 
-router.get('/booking', userControllers.bookingPage);
+router.get('/bookings', userControllers.bookingPage);
 
 router.get('/about', userControllers.aboutPage);
 
