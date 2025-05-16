@@ -11,9 +11,6 @@ router.post('/bookings', [
         .isEmail()
         .normalizeEmail()
         .withMessage('please enter a valid email address'),
-    check('password')
-        .isLength({ min: 8 })
-        .withMessage('password must be at least 8 characters long').trim(),
     check('carModel')
         .notEmpty()
         .withMessage('car model is required'),
@@ -24,3 +21,5 @@ router.post('/bookings', [
         .notEmpty()
         .withMessage('service is required')
 ], bookingController.bookingController);
+
+module.exports = router;
