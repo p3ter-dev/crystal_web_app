@@ -37,8 +37,8 @@ app.use(session({
   }
 }));
 
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 app.use((req, res, next) => {
     res.locals.session = req.session;
@@ -51,7 +51,7 @@ app.use(contactRoute);
 
 app.use(authRoute);
 
-app.use(passportRoute);
+// app.use(passportRoute);
 
 app.use(bookingRoute);
 
