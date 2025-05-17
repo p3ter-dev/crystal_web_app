@@ -20,7 +20,7 @@ passport.use(new GoogleStrategy({
       );
 
       if (userByGoogleId.rows.length > 0) {
-        return done(null, existingUser.rows[0]);
+        return done(null, userByGoogleId.rows[0]);
       }
 
       const userByEmail = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
