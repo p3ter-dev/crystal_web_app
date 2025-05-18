@@ -7,7 +7,6 @@ const contactRoute = require('./routes/contact');
 const authRoute = require('./routes/authRoutes');
 const passportRoute = require('./routes/passportRoute');
 const bookingRoute = require('./routes/bookingRoute');
-require('../database/config/contactDb');
 const path = require('path');
 const app = express();
 const passport = require('passport');
@@ -23,6 +22,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const pgPool = new Pool({
   connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 app.use(session({
