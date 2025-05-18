@@ -64,7 +64,7 @@ app.use((req, res) => {
 app.use((err, req, res, next) => {
   console.error(err);
   res.status(500).render('errors/500', {
-    title: '500 Server Error',
+    title: 'server error',
   });
 });
 
