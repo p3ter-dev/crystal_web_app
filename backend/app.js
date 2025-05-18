@@ -7,6 +7,7 @@ const contactRoute = require('./routes/contact');
 const authRoute = require('./routes/authRoutes');
 const passportRoute = require('./routes/passportRoute');
 const bookingRoute = require('./routes/bookingRoute');
+require('../database/config/contactDb');
 const path = require('path');
 const app = express();
 const passport = require('passport');
