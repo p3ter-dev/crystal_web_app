@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const pool = require('../../database/config/contactDb');
 const signUpController = async (req, res) => {
-const { username, email, password, confirmPassword } = req.body;
+    const { username, email, password, confirmPassword } = req.body;
 
     if (!username || !email || !password || !confirmPassword) {
         return res.status(400).render('errors/fields-required', { title: 'fields required' });
